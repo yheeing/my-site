@@ -11,6 +11,13 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 // import Link from '@material-ui/core/Link';
 // import ProTip from './ProTip';
 
+// import { BrowserRouter, Route, Link } from "react-router-dom";
+
+import About from './pages/About';
+import Blog from './pages/Blog';
+import Project from './pages/Project';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 
 const StyledBreadcrumb = withStyles((theme) => ({
   root: {
@@ -31,51 +38,48 @@ const StyledBreadcrumb = withStyles((theme) => ({
 
 function App() {
   return (
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
+    <div>
     <Container maxWidth="sm">
-      {/* <Box my={4}>
-        <Typography variant="h4" component="h1" gutterBottom>
-          Create React App v4-beta example
-        </Typography>
-        <ProTip />
-        <Copyright />
-      </Box> */}
-
       <Breadcrumbs aria-label="breadcrumb">
-      <StyledBreadcrumb
-        component="a"
-        href="#"
-        label="Home"
-        icon={<HomeIcon fontSize="small" />}
-        // onClick={handleClick} TODO:
-      />
-      <StyledBreadcrumb component="a" href="#" label="About" /*onClick={handleClick} TODO: */ />
-      <StyledBreadcrumb
-        label="Contact"
-        deleteIcon={<ExpandMoreIcon />}
-        // onClick={handleClick} TODO:
-        // onDelete={handleClick} TODO:
-      />
-    </Breadcrumbs>
-
-
+        <StyledBreadcrumb
+          component="a"
+          href="/pages/About"
+          label="About"
+          icon={<HomeIcon fontSize="small" />}
+          onClick={handleClick}
+        />
+        <StyledBreadcrumb component="a" href="/pages/Blog" label="Blog" /*onClick={handleClick} TODO: */ />
+        <StyledBreadcrumb
+          href="/pages/Project"
+          label="Project"
+          deleteIcon={<ExpandMoreIcon />}
+          onClick={handleClick}
+          onDelete={handleClick}
+        />
+      </Breadcrumbs>
     </Container>
+
+    <Router>
+      <div>
+        <Switch>
+          <Route path="/pages/about">
+            <About />
+          </Route>
+          <Route path="/pages/blog">
+            <Blog />
+          </Route>
+          <Route path="/pages/project">
+            <Project />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+    </div>
   );
+}
+
+function handleClick() {
+
 }
 
 export default App;
