@@ -43,14 +43,14 @@ function App() {
       <Breadcrumbs aria-label="breadcrumb">
         <StyledBreadcrumb
           component="a"
-          href="/pages/About"
+          href={process.env.PUBLIC_URL + '/pages/About'}
           label="About"
           icon={<HomeIcon fontSize="small" />}
           onClick={handleClick}
         />
-        <StyledBreadcrumb component="a" href="/pages/Blog" label="Blog" /*onClick={handleClick} TODO: */ />
+        <StyledBreadcrumb component="a" href={process.env.PUBLIC_URL + '/pages/Blog'} label="Blog" /*onClick={handleClick} TODO: */ />
         <StyledBreadcrumb
-          href="/pages/Project"
+          href={process.env.PUBLIC_URL + '/pages/Project'}
           label="Project"
           deleteIcon={<ExpandMoreIcon />}
           onClick={handleClick}
@@ -59,16 +59,16 @@ function App() {
       </Breadcrumbs>
     </Container>
 
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <div>
         <Switch>
-          <Route path="/pages/about">
+          <Route path={process.env.PUBLIC_URL + '/pages/About'}>
             <About />
           </Route>
-          <Route path="/pages/blog">
+          <Route path={process.env.PUBLIC_URL + '/pages/Blog'}>
             <Blog />
           </Route>
-          <Route path="/pages/project">
+          <Route path={process.env.PUBLIC_URL + '/pages/Project'}>
             <Project />
           </Route>
         </Switch>
